@@ -4,12 +4,14 @@ def get_book_text(filepath):
     with open(filepath, 'r', encoding='utf-8-sig') as file:
         return file.read()
     
-from stats import split_book_wide_open, count_chars, sort_chars
+from stats import split_book_wide_open, count_chars, sort_chars, chars_dict_to_sorted_list
 
 def main():
     if len(sys.argv) < 2:
         print("Usage: python3 main.py <path_to_book>")
-        sys.exit(1)
+        print("Defaulting to books/frankenstein.txt")
+        filepath = "books/frankenstein.txt"
+        #sys.exit(1)
     else:
         filepath = sys.argv[1]
 
@@ -25,8 +27,10 @@ def main():
     print(f"Found {total_words} total words")
     print("--------- Character Count -------")
     #print loop
-    for entries in (sort_chars(counted_book)):
-        print (f"{entries["char"]}: {entries["num"]}")
+    for entries in (chars_dict_to_sorted_list(sort_chars(counted_book))):
+        print (entries)
+#    for entries in (sort_chars(counted_book)):
+#        print (f"{entries["char"]}: {entries["num"]}")
 
     print("============= END ===============")
 main()

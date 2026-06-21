@@ -19,3 +19,15 @@ def sort_chars(char_dict):
         sorted_list.append(new_dict)
     sorted_list = sorted(sorted_list, key=lambda x: x['num'], reverse=True)
     return sorted_list
+
+def sort_on(book: tuple[str,int]) -> int:
+    return book[1]
+
+def chars_dict_to_sorted_list(di: dict[str,int]) -> list[tuple[str,int]]:
+    li = []
+    for ch in di:
+        #count = ch["num"]
+        li.append((ch["char"],ch["num"]))
+    sorted_list = sorted(li, reverse=True, key=sort_on)
+    return sorted_list
+        
